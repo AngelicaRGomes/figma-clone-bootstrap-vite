@@ -36,5 +36,5 @@ export default defineConfig({
     cssCodeSplit: false,
     sourcemap: false,
   },
-  base: "./",
+  base: "/figma-clone-bootstrap-vite/",
 });
