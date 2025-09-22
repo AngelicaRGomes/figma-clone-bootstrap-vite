@@ -507,7 +507,7 @@ html {
   align-items: center;
   color: var(--color-text-nav);
   border-bottom: 1px solid var(--border);
-  font-size: 1.1rem; /* Tamanho base dos títulos de seção */
+  font-size: 1rem; /* Tamanho base dos títulos de seção */
 }
 
 /* Ícones dos headers dos painéis da sidebar ligeiramente maiores */
@@ -642,7 +642,7 @@ html {
 /* Deixar "Controle de ponto" em negrito na seção específica */
 .list-tile:has(.bi-clock) .label {
   font-weight: 700;
-  font-size: 1.1rem; /* Mesmo tamanho dos panel-header */
+  font-size: 1rem; /* Mesmo tamanho dos panel-header */
 }
 
 /* Remover hover do título principal "Controle de ponto" */
