@@ -159,37 +159,6 @@ npm run build        # Build de produção
 npm run preview      # Preview do build local
 ```
 
-## 🚀 Deploy no GitHub Pages
-
-### Configuração Automática
-
-O projeto está configurado para deploy automático via GitHub Actions:
-
-1. **Push para `main`** → Deploy automático
-2. **Build otimizado** com Vite
-3. **URL final:** `https://SEU_USUARIO.github.io/figma-clone-bootstrap-vite/`
-
-### Comandos Git
-
-```bash
-# Inicializar repositório
-git init
-git add .
-git commit -m "Portal completo com design system modular"
-
-# Conectar ao GitHub
-git branch -M main
-git remote add origin https://github.com/SEU_USUARIO/figma-clone-bootstrap-vite.git
-git push -u origin main
-```
-
-### Ativar GitHub Pages
-
-1. Vá para **Settings** do repositório
-2. Clique em **Pages** no menu lateral
-3. Source: **GitHub Actions**
-4. Deploy automático ativado! 🚀
-
 ## 🛠️ Tecnologias
 
 - **[Vite](https://vitejs.dev/)** - Build tool moderna e rápida
