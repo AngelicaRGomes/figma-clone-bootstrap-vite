@@ -94,7 +94,6 @@ figma-clone-bootstrap-vite/
 
 ```javascript
 $(function () {
-  // Configura todos os helpers do sistema
   setupCarouselEventListeners();
   setupNavbarEventListeners();
   setupNewsEventListeners(showNotification, showModal);
