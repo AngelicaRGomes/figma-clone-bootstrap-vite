@@ -1,0 +1,59 @@
+/**
+ * STYLES.CSS - ARQUIVO PRINCIPAL MODULARIZADO
+ * ============================================
+ * 
+ * Este arquivo é um orquestrador que importa todos os estilos
+ * organizados em módulos específicos para melhor manutenibilidade.
+ * 
+ * Estrutura modularizada:
+ * 1. Tokens de Design (styles/tokens.css)
+ * 2. Estilos Principais (styles/layout.css)
+ * 3. Responsividade (styles/responsive.css)
+ * 4. Documentação do Design System
+ */
+
+/* ==========================================================================
+   IMPORTAÇÕES DOS MÓDULOS DE ESTILO
+   ========================================================================== */
+
+/* 1. Tokens de Design - Variáveis CSS e configurações globais */
+@import "./styles/tokens.css";
+
+/* 2. Estilos Principais - Layout, componentes e interações */
+@import "./styles/layout.css";
+
+/* 3. Responsividade - Media queries e adaptações de tela */
+@import "./styles/responsive.css";
+
+/* ==========================================================================
+   DOCUMENTAÇÃO DO DESIGN / LAYOUT DO PROJETO
+   ========================================================================== */
+
+/*
+ * ESTRUTURA MODULAR DOS ESTILOS:
+ * 
+ * 📁 src/
+ * ├── 📄 styles.css              - Arquivo principal (orquestrador)
+ * └── 📁 styles/
+ *     └── 📄 layout.css          - Layout, componentes e interações
+ *     └── 📄 responsive.css      - Media queries e responsividade
+ *     └── 📄 tokens.css          - Tokens de design (variáveis CSS)
+ * 
+ * TOKENS DE DESIGN DISPONÍVEIS:
+ *    Use as variáveis CSS customizadas para manter consistência:
+ *    - Cores da marca: var(--color-brand-primary), var(--color-brand-secondary)
+ *    - Cores de texto: var(--color-text-nav), var(--color-text-body)
+ *    - Cores de superfície: var(--color-surface-secondary), var(--color-surface-tertiary)
+ *    - Cores das tags: var(--color-tag-purple), var(--color-tag-yellow), var(--color-tag-blue)
+ *    - Sombras: var(--shadow-sm), var(--shadow-md), var(--shadow-lg)
+ *    - Fonte: var(--font-family-primary)
+ * 
+ * UTILITÁRIOS (BOOTSTRAP):
+ *    Use classes utilitárias do Bootstrap para layout e formatação:
+ *    - Display: .d-flex, .d-none, .d-block
+ *    - Texto: .text-center, .fw-bold, .fs-1 até .fs-6
+ *    - Espaçamentos: .m-4, .p-3, .gap-2
+ *    - Cores: .text-primary, .bg-primary (Bootstrap) + variáveis CSS (projeto)
+ * 
+
+*/

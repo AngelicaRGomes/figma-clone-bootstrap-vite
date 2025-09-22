@@ -1,0 +1,1234 @@
+/**
+ * MAIN STYLES
+ * ===========
+ * 
+ * Arquivo contendo todos os estilos principais do projeto.
+ * Este arquivo contém apenas os estilos base, componentes e layouts.
+ * As media queries estão em responsive.css.
+ * 
+ * Estrutura:
+ * 1. Configuração de compatibilidade
+ * 2. Layout base (main, container, grid)
+ * 3. Componentes (navbar, hero, cards, etc.)
+ * 4. Estados e interações
+ */
+
+/* ==========================================================================
+   CONFIGURAÇÃO DE COMPATIBILIDADE
+   ========================================================================== */
+
+/* Mapeamento das variáveis legadas para os novos tokens */
+:root {
+  /* Variáveis legadas mantidas para compatibilidade */
+  --brand: var(--color-brand-primary);
+  --bg-soft: var(--color-surface-soft);
+  --card: var(--color-surface-primary);
+  --card-secondary: var(--color-surface-secondary);
+  --text-900: var(--color-text-primary);
+  --text-700: var(--color-text-secondary);
+  --text-600: var(--color-text-tertiary);
+  --text-500: var(--color-text-quaternary);
+  --border: var(--color-border-primary);
+  --shadow: var(--shadow-sm);
+  --shadow-lg: var(--shadow-md);
+}
+
+/* Main content spacing */
+main {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  width: 100%;
+  min-width: 100%;
+}
+
+/* Container adjustments */
+.container {
+  padding-left: 15px;
+  padding-right: 0;
+  max-width: none;
+}
+
+/* Ajustar largura das seções centrais - reduzir apenas a seção principal */
+.col-lg-9 {
+  flex: 0 0 73%; /* Reduzir mais de 75% (9/12) para 70% */
+  max-width: 73%;
+}
+
+/* Sidebar adjustments */
+
+.col-lg-3 {
+  flex: 0 0 25%; /* Manter largura original da sidebar */
+  max-width: 25%;
+  padding-right: 15px; /* Reduzir espaçamento da borda direita */
+}
+
+/* Navbar */
+.topbar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-height: 80px;
+}
+.topbar .container {
+  padding: 0 35px 0 105px;
+  max-width: none;
+}
+.topbar .navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+}
+.navbar-brand {
+  font-weight: 700;
+  color: var(--color-text-nav);
+  font-size: 1rem;
+  margin-right: 0;
+}
+
+.nav-link {
+  font-weight: 700;
+  color: var(--color-text-nav);
+  font-size: 1rem;
+  margin-left: 3rem;
+}
+.nav-link:hover {
+  color: var(--color-text-nav);
+  opacity: 0.8;
+}
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: var(--text-700);
+}
+.icon-btn:hover {
+  background: transparent;
+  color: var(--brand);
+  transform: scale(1.05);
+}
+
+/* Hero */
+.hero-section {
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  position: relative;
+  margin: 1rem 29px 0 90px;
+}
+
+/* Container do carrossel com bordas arredondadas */
+.hero-carousel-container {
+  border-radius: 20px;
+  overflow: hidden;
+}
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.hero-carousel img {
+  object-fit: cover;
+  height: 47vh;
+}
+
+/* Conteúdo textual fora do carrossel */
+.hero-content {
+  padding: 35px 20px 20px 0;
+}
+
+.hero-content .badge {
+  margin-bottom: 12px;
+}
+
+.hero-content .hero-title {
+  margin-bottom: 8px;
+}
+
+.hero-content .hero-lead {
+  margin-bottom: 0;
+}
+
+/* Container dos indicadores */
+.carousel-indicators-container {
+  padding: 0 20px 20px 20px;
+  text-align: center;
+}
+/* Controles externos do carrossel */
+.carousel-control-external {
+  position: absolute;
+  top: 28%;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: none;
+  z-index: 100;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  display: block !important;
+}
+
+.carousel-control-external:hover {
+  opacity: 1;
+}
+
+.carousel-control-external.carousel-control-prev {
+  left: -45px; /* Posiciona no espaço entre o carrossel e a sidebar */
+}
+
+.carousel-control-external.carousel-control-next {
+  right: -65px; /* Posiciona no espaço entre o carrossel e a sidebar */
+}
+
+.carousel-control-external .carousel-control-prev-icon,
+.carousel-control-external .carousel-control-next-icon {
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--color-brand-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-external .carousel-control-prev-icon::before {
+  content: "\f284"; /* bi-chevron-left */
+  font-family: "bootstrap-icons" !important;
+  display: block !important;
+}
+
+.carousel-control-external .carousel-control-next-icon::before {
+  content: "\f285"; /* bi-chevron-right */
+  font-family: "bootstrap-icons" !important;
+  display: block !important;
+}
+
+/* Controles internos removidos */
+.hero-carousel .carousel-control-prev,
+.hero-carousel .carousel-control-next {
+  display: none;
+}
+
+/* Responsividade das setas do carrossel movida para responsive.css */
+.hero-meta {
+  padding: 12px 6px;
+}
+.badge-soft {
+  background: #fff;
+  color: var(--color-brand-accent);
+  border-radius: 18px;
+  border: 1.8px solid var(--color-brand-accent);
+  font-weight: 600;
+  padding: 7px 14px !important;
+  font-size: 0.9rem;
+}
+.hero-title {
+  color: var(--text-900);
+  font-weight: 700;
+  margin: 8px 0;
+  font-size: clamp(0.9rem, 1.4vw, 1.4rem);
+}
+.hero-lead {
+  color: var(--color-text-body);
+  margin-bottom: 12px;
+  font-size: clamp(0.7rem, 1.05vw, 0.89rem);
+  line-height: 1.1;
+}
+.carousel-indicators.dots-bottom {
+  position: static;
+  margin-top: 20px;
+  gap: 0;
+  justify-content: center;
+  /* width: auto; */
+  display: flex;
+}
+.carousel-indicators.dots-bottom [data-bs-target] {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  border: none;
+  margin: 0 3px;
+}
+.carousel-indicators.dots-bottom .active {
+  background: var(--brand);
+}
+
+/* Responsividade das bolinhas do carrossel movida para responsive.css */
+
+/* Fluid Typography */
+html {
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: clamp(0.6rem, 1.6vw, 1.6rem);
+  font-weight: 700;
+  color: var(--color-text-nav);
+  margin: 0;
+}
+
+/* News Section */
+.news-section {
+  margin: 0 29px 2rem 90px;
+}
+
+.news-card {
+  background: var(--card-secondary);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.news-image {
+  width: 28vw;
+  height: 36vh;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.news-content {
+  padding: 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.news-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+}
+.tag-purple {
+  background: var(--color-tag-purple);
+  color: var(--color-tag-purple-text);
+  border-radius: 18px;
+  padding: 4px 12px;
+}
+.tag-yellow {
+  background: var(--color-tag-yellow);
+  color: var(--color-tag-yellow-text);
+  border-radius: 18px;
+  padding: 4px 12px;
+}
+.tag-blue {
+  background: var(--color-tag-blue);
+  color: var(--color-tag-blue-text);
+  border-radius: 18px;
+  padding: 4px 12px;
+}
+.news-title {
+  font-size: clamp(0.9rem, 1.4vw, 1.4rem);
+  font-weight: 600;
+  color: var(--text-900);
+  margin-bottom: 8px;
+  line-height: 1.4;
+  align-self: flex-start;
+}
+.news-description {
+  color: var(--color-text-body);
+  font-size: clamp(0.7rem, 1vw, 1rem);
+  margin-bottom: 12px;
+  line-height: 1.1;
+  min-height: 4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.news-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 20px;
+}
+.news-date {
+  color: var(--text-500);
+  font-size: 0.875rem;
+}
+
+/* Small News Cards */
+.news-card-small {
+  background: var(--card-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+.news-card-small:hover {
+  transform: translateY(-1px);
+}
+.news-image-small {
+  width: 100%;
+  height: 23vh;
+  object-fit: cover;
+}
+.news-content-small {
+  padding: 16px;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+.news-title-small {
+  font-size: clamp(0.9rem, 1.4vw, 1.4rem);
+  font-weight: 600;
+  color: var(--text-900);
+  margin-bottom: 10px;
+  line-height: 1.3;
+  align-self: flex-start;
+}
+.news-description-small {
+  color: var(--color-text-body);
+  font-size: clamp(0.7rem, 1vw, 0.95rem);
+  margin-bottom: 12px;
+  line-height: 1.1;
+  min-height: 2em;
+  max-height: 2.2em; /* Altura máxima para 2 linhas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 50px; /* Espaço para os elementos meta */
+}
+.news-meta-small {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 20px;
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+}
+.news-date-small {
+  color: var(--text-500);
+  font-size: clamp(0.7rem, 1vw, 0.95rem);
+}
+
+/* Quick Access Section */
+.quick-access-section {
+  margin: 0 0 2rem 90px;
+}
+.quick-access-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 24px;
+}
+.quick-access-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  background: transparent;
+  box-shadow: none;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+.quick-access-item:hover {
+  border-radius: 16px;
+}
+.quick-access-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-surface-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  color: var(--brand);
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+.quick-access-item:hover .quick-access-icon {
+  background: var(--color-surface-secondary);
+  color: var(--brand);
+  border: 2px solid white;
+}
+.quick-access-label {
+  font-size: clamp(0.6rem, 1vw, 1.2rem);
+  font-weight: 700;
+  color: var(--color-brand-secondary);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Sidebar panels */
+.panel {
+  background: var(--card-secondary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: none;
+  overflow: hidden;
+  margin: 0 0 16px;
+  padding: 0 10px 0;
+}
+.panel-header {
+  font-weight: 700;
+  padding: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--color-text-nav);
+  border-bottom: 1px solid var(--border);
+  font-size: 1.1rem; /* Tamanho base dos títulos de seção */
+}
+
+/* Ícones dos headers dos painéis da sidebar ligeiramente maiores */
+.panel-header i {
+  font-size: 1.1rem;
+}
+.panel-body {
+  padding: 0;
+  margin-bottom: 8px; /* Margem para evitar que o hover do primeiro item cole no botão */
+}
+.list-divider {
+  border-top: 1px solid var(--border);
+  margin: 0 20px; /* Alinha com o início do texto e vai até a seta */
+}
+
+.panel-divider-full {
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+.vacancy-list .list-divider {
+  margin: 0;
+}
+.list-tile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.list-tile i:first-child {
+  font-size: 1.1rem;
+}
+
+.list-tile .label {
+  flex: 1;
+  text-align: left;
+}
+.list-tile:hover {
+  background: var(--bg-soft);
+  border-radius: 8px;
+}
+.label {
+  color: var(--text-700);
+  font-size: 1.1rem;
+}
+
+.label-bold {
+  font-weight: 700;
+}
+.chev {
+  font-size: 1rem;
+  color: var(--color-brand-secondary);
+}
+
+/* Todos os ícones Bootstrap Icons em azul */
+.bi,
+[class^="bi-"],
+[class*=" bi-"] {
+  color: var(--color-brand-secondary);
+}
+
+/* Botões de Salvar e Notícias Salvas */
+.btn:has(.bi-bookmark),
+.btn:has(.bi-bookmark-fill),
+.btn-outline-primary:has(.bi-bookmark),
+.btn-outline-primary:has(.bi-bookmark-fill) {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn:has(.bi-bookmark):hover,
+.btn:has(.bi-bookmark-fill):hover,
+.btn-outline-primary:has(.bi-bookmark):hover,
+.btn-outline-primary:has(.bi-bookmark-fill):hover {
+  text-decoration: none;
+}
+
+/* Ícones brancos no hover APENAS do botão "Notícias salvas" (btn-outline-primary) */
+.btn-outline-primary:has(.bi-bookmark):hover .bi-bookmark,
+.btn-outline-primary:has(.bi-bookmark-fill):hover .bi-bookmark-fill {
+  color: white !important;
+}
+
+/* Links "Ver mais notícias" e "Ver todas as vagas" */
+.news-section .btn-link,
+.panel-body .text-center .btn-link {
+  color: var(--color-brand-secondary) !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+.news-section .btn-link:hover,
+.panel-body .text-center .btn-link:hover {
+  color: var(--color-brand-secondary) !important;
+  text-decoration: none !important;
+  opacity: 0.8;
+}
+
+/* Estado padrão - ícone outline (apenas linha) - usa o bi-bookmark padrão do HTML */
+.bi-bookmark {
+  font-weight: normal;
+}
+
+/* Estado salvo - ícone preenchido */
+.saved .bi-bookmark {
+  font-weight: 900; /* Torna o ícone mais espesso/preenchido */
+}
+
+.btn-big {
+  height: 42px;
+  border-radius: 8px;
+  width: 86%;
+  font-weight: 600;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Remove borda inferior do header quando seguido por panel-body (botão Entrada) */
+.panel-header + .panel-body {
+  border-top: none;
+}
+
+.panel-header:has(+ .panel-body) {
+  border-bottom: none;
+}
+
+/* Deixar "Controle de ponto" em negrito na seção específica */
+.list-tile:has(.bi-clock) .label {
+  font-weight: 700;
+  font-size: 1.1rem; /* Mesmo tamanho dos panel-header */
+}
+
+/* Remover hover do título principal "Controle de ponto" */
+.list-tile:has(.bi-clock):hover {
+  background: transparent !important;
+}
+
+.list-tile:has(.bi-clock):hover .label {
+  color: var(--text-700) !important;
+}
+
+/* Vacancy Section */
+.vacancy-list {
+  margin: 0;
+}
+.vacancy-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px 16px 20px; /* Aumenta padding direito para mais espaço da seta */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.vacancy-item:hover {
+  background: var(--bg-soft);
+  border-radius: 8px;
+}
+.vacancy-info {
+  flex: 1;
+}
+.vacancy-category {
+  font-size: 1.1rem; /* Mesmo tamanho dos itens de registro */
+  color: var(--color-text-category);
+  margin-bottom: 2px;
+}
+.vacancy-title {
+  font-size: 1.1rem; /* Mesmo tamanho dos itens de registro */
+  color: var(--text-700);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Vacancy content styles */
+.vacancy-content {
+  background: var(--color-surface-tertiary);
+  border-left: 3px solid var(--brand);
+  margin: 8px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.vacancy-details {
+  padding: 16px 20px;
+}
+
+.vacancy-info-section {
+  margin-bottom: 16px;
+}
+
+.vacancy-section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-900);
+  margin-bottom: 8px;
+}
+
+.vacancy-description {
+  color: var(--text-600);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.vacancy-requirements,
+.vacancy-benefits {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.vacancy-requirements li,
+.vacancy-benefits li {
+  color: var(--text-600);
+  font-size: 0.875rem;
+  margin-bottom: 4px;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-tag {
+  background: var(--brand);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.vacancy-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-item {
+  font-size: 0.875rem;
+  color: var(--text-600);
+}
+
+.vacancy-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.vacancy-actions .btn {
+  font-size: 0.875rem;
+  padding: 6px 12px;
+}
+
+/* Events Section */
+.event-item {
+  display: flex;
+  gap: 16px;
+  padding: 18px 20px 18px 20px; /* Aumenta padding direito para mais espaço da seta */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.event-item:hover {
+  background: var(--bg-soft);
+  border-radius: 8px;
+}
+.event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+  text-align: center;
+}
+.event-day {
+  font-weight: 700;
+  color: var(--text-900);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.event-month {
+  font-size: 1rem;
+  color: #353a44;
+  margin-top: 1px;
+}
+.event-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+.event-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.event-time {
+  font-size: 1rem;
+  color: var(--color-text-meta);
+  font-weight: 400;
+}
+.event-title {
+  font-size: 1.1rem; /* Mesmo tamanho dos itens de registro */
+  color: var(--text-700);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Event content styles */
+.event-content-detail {
+  background: var(--color-surface-tertiary);
+  border-left: 3px solid var(--brand);
+  margin: 8px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.event-details {
+  padding: 16px 20px;
+}
+
+.event-info-section {
+  margin-bottom: 16px;
+}
+
+.event-section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-900);
+  margin-bottom: 8px;
+}
+
+.event-description {
+  color: var(--text-600);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.event-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.event-schedule,
+.event-included {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.event-schedule li,
+.event-included li {
+  color: var(--text-600);
+  font-size: 0.875rem;
+  margin-bottom: 4px;
+}
+
+.event-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.event-actions .btn {
+  font-size: 0.875rem;
+  padding: 6px 12px;
+}
+
+/* Footer */
+.footer {
+  background: var(--card-secondary);
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  padding: 3rem 0 1rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow-x: hidden;
+}
+.footer .container {
+  margin-left: 90px;
+  padding-right: 20px;
+  max-width: calc(100vw - 110px);
+}
+.footer-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-nav);
+  margin-bottom: 0;
+}
+
+/* Espaçamento específico para o título Sistema */
+.footer-title.sistema-spacing {
+  margin-top: 2rem;
+}
+.footer-subtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-700);
+  margin-bottom: 0;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links a {
+  color: var(--text-600);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+.footer-links a:hover {
+  color: var(--brand);
+}
+
+/* Blue links in footer */
+.footer-links a.link-blue-footer {
+  color: var(--color-brand-secondary);
+  font-weight: 700;
+}
+.footer-links a.link-blue-footer:hover {
+  color: var(--color-brand-secondary);
+  opacity: 0.8;
+}
+
+/* Blue links in footer */
+.footer-links a.link-blue-footer {
+  color: var(--color-brand-secondary);
+  font-weight: 700;
+}
+.footer-links a.link-blue-footer:hover {
+  color: var(--color-brand-secondary);
+  opacity: 0.8;
+}
+
+/* Footer item titles (formatted as subtitles but bold and blue) */
+.footer-links a.footer-item-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-brand-secondary);
+  margin: 1.7rem 0 0.6rem;
+  display: block;
+  line-height: 1.2;
+}
+.footer-links a.footer-item-title:hover {
+  color: var(--color-brand-secondary);
+  opacity: 0.8;
+}
+
+/* Adjust spacing for columns with footer-item-title to align as subtitles */
+.footer-links li:has(.footer-item-title) {
+  margin-bottom: 0;
+}
+.footer-links li:has(.footer-item-title) + li {
+  margin-top: 0;
+}
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+.footer-bottom-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+.footer-bottom-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-600);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+.footer-bottom-link:hover {
+  opacity: 0.8;
+}
+
+/* Footer bottom link colors */
+.link-blue {
+  color: var(--color-text-nav);
+  font-weight: 700;
+}
+.link-blue i {
+  color: var(--color-brand-secondary);
+  font-size: 1.5rem;
+}
+.link-blue:hover {
+  color: var(--color-text-nav);
+  opacity: 0.8;
+}
+
+/* jQuery Effects */
+.hover-effect {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.quick-access-item.clicked {
+  transform: scale(0.95);
+}
+
+.quick-access-item.clicked .quick-access-icon {
+  background: var(--color-surface-secondary) !important;
+  color: var(--brand) !important;
+  border: 2px solid white !important;
+}
+
+.quick-access-item.clicked .quick-access-label {
+  color: var(--brand) !important;
+  font-weight: 600;
+}
+
+/* Notification styles */
+.alert {
+  border: none;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+}
+
+.alert-success {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
+}
+
+.alert-info {
+  background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+  color: #0c5460;
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+  color: #721c24;
+}
+
+/* Modal enhancements */
+.modal-content {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border);
+  border-radius: 16px 16px 0 0;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border);
+  border-radius: 0 0 16px 16px;
+}
+
+/* Search suggestions */
+.search-suggestions a {
+  color: var(--text-600);
+  transition: color 0.2s ease;
+}
+
+.search-suggestions a:hover {
+  color: var(--brand);
+}
+
+/* Notification items */
+.notification-item {
+  transition: background-color 0.2s ease;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.notification-item:hover {
+  background: var(--bg-soft);
+}
+
+/* Button loading state */
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Collapsible content */
+.collapsible-content {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+}
+
+.collapsible-content .list-tile {
+  padding-left: 32px;
+  background: transparent;
+}
+
+.collapsible-content .list-tile:hover {
+  background: rgba(13, 110, 253, 0.05);
+}
+
+.collapsible-content .list-divider {
+  margin-left: 32px;
+}
+
+#time-control .list-tile:last-child {
+  margin-bottom: 8px;
+}
+
+/* Garante margem inferior para o último elemento da seção time-control, seja ele um list-tile ou option-content */
+#time-control > :last-child {
+  margin-bottom: 8px;
+}
+
+/* Específico para option-content dentro de time-control */
+#time-control .option-content {
+  margin-bottom: 8px;
+}
+
+/* Garante margem inferior em todos os list-tile dentro de time-control */
+#time-control .list-tile {
+  margin-bottom: 8px;
+}
+
+/* Garante que o hover funcione corretamente, mantendo a margem */
+#time-control .list-tile:hover {
+  background: var(--bg-soft);
+  border-radius: 8px;
+}
+
+/* Margem inferior para o último item da seção Registro de ponto */
+.panel:has(.panel-header .bi-clock-history) .list-tile:last-child {
+  margin-bottom: 8px;
+}
+
+/* Badge styles for pending items */
+.badge {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+.bg-info {
+  background-color: #0dcaf0 !important;
+}
+
+.bg-success {
+  background-color: #198754 !important;
+}
+
+/* Option content styles */
+.option-content {
+  background: var(--color-surface-tertiary);
+  border-left: 3px solid var(--brand);
+  margin: 8px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.option-details {
+  padding: 16px 20px;
+}
+
+.option-description {
+  color: var(--text-600);
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.option-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.option-filters {
+  margin-bottom: 12px;
+}
+
+.option-settings {
+  margin-bottom: 12px;
+}
+
+.option-formats {
+  margin-bottom: 12px;
+}
+
+.option-content .form-control,
+.option-content .form-select {
+  font-size: 0.875rem;
+}
+
+.option-content .form-check-label {
+  font-size: 0.875rem;
+  color: var(--text-700);
+}
+
+.option-content .btn {
+  font-size: 0.875rem;
+  padding: 6px 12px;
+}
+
+/* Enhanced hover effects */
+.news-card:hover .news-title,
+.news-card-small:hover .news-title-small {
+  color: var(--brand);
+}
+
+.list-tile:hover .label {
+  color: var(--brand);
+}
+
+.vacancy-item:hover .vacancy-title {
+  color: var(--brand);
+}
+
+.event-item:hover .event-title {
+  color: var(--brand);
+}
